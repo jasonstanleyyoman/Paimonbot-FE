@@ -43,6 +43,18 @@
     transform: rotate(360deg);
   }
 }
+.page-animation {
+  animation : page-enter 0.7s ease;
+}
+@keyframes page-enter {
+  from {
+    transform : translateY(-500px);
+  }
+  to {
+    transform : translateY(0);
+
+  }
+}
 
 .loading-enter div {
   opacity: 0;
@@ -58,4 +70,16 @@
   transition: all 0.2s ease;
 
   opacity: 0;
+}
+.page-enter {
+  transform: translateY(-500px);
+}
+.page-enter-active {
+  transform: translateY(0);
+}
+.page-exit {
+  transform: translateY(0);
+}
+.page-exit-active {
+  transform: translateY(-500px);
 }

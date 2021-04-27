@@ -17,3 +17,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input:focus-within {
+  outline : none;
+}
+button:focus-within {
+  outline : none;
+}
+input:focus {
+  outline : none;
+}
+button:focus {
+  outline : none;
+}

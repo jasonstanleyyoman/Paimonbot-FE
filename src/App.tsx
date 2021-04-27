@@ -1,7 +1,10 @@
 import React from 'react';
 import Chat from "./components/Chat"
+import Auth from "./components/Auth"
 import { Message } from "./types"
 import { useSocket } from './context/socket'
+import { CSSTransition } from "react-transition-group"
+
 import './App.css';
 const dummy: Message[] = [
   {
@@ -16,6 +19,7 @@ const dummy: Message[] = [
   },
 ]
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [message, setMessage] = React.useState("");
   const [allMessage, setAllMessage] = React.useState<Message[]>([...dummy]);
@@ -53,16 +57,39 @@ function App() {
       }, 3000)
     }
   }
+  const onLoggedInSuccess = () => {
+    setIsLoggedIn(true);
+  }
   return (
-    <div className="App">
-      <Chat 
-        allMessage={allMessage}
-        isLoading={isLoading}
-        onSubmit={handleSubmit}
-        message={message}
-        setMessage={setMessage}
-      />
-      {/* <button onClick={() => setIsLoading(!isLoading)}>Toggle</button> */}
+    <div className="App bg-yellow-300 h-screen w-screen flex items-center justify-center">
+      {
+        isLoggedIn ?
+        <CSSTransition
+          in={isLoggedIn}
+          timeout={300}
+          unmountOnExit
+          classNames="page"
+        >
+          <Chat 
+            allMessage={allMessage}
+            isLoading={isLoading}
+            onSubmit={handleSubmit}
+            message={message}
+            setMessage={setMessage}
+          />
+        </CSSTransition> :
+        <CSSTransition
+          in={!isLoggedIn}
+          timeout={300}
+          unmountOnExit
+          classNames="page"
+        >
+        <Auth
+          onSuccess={onLoggedInSuccess}
+        />
+        </CSSTransition>
+      }
+      
     </div>
   );
 }
