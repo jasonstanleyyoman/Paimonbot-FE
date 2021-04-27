@@ -32,7 +32,7 @@ const Chat = ({
                 <div className="h-full w-full px-4 py-1 bg-gray-400 overflow-y-auto flex flex-col scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
                     <div className="self-center mt-2">Today</div>
                     {
-                        allMessage.map((message, idx) => <ChatBubble key={idx} sender={message.sender} sent={message.sent}>{message.message}</ChatBubble>)
+                        allMessage.map((message, idx) => <ChatBubble key={idx} sender={message.sender} sent={message.sent} type={message.type} image={message.image}>{message.message}</ChatBubble>)
                     }
 
                 </div>

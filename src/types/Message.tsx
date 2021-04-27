@@ -1,7 +1,9 @@
 interface Message  {
     sender: "bot" | "self",
     sent: Date,
-    message: string
+    message?: string,
+    type : "text" | "sticker",
+    image?: string
 }
 
 export type {

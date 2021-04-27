@@ -1,6 +1,7 @@
 import React from 'react';
 import Chat from "./components/Chat"
 import Auth from "./components/Auth"
+import { KeqingStudy, ZilongQuestion, DilucNote,DilucSent, Hutao } from "./assets"
 import { Message } from "./types"
 import { useSocket } from './context/socket'
 import { CSSTransition } from "react-transition-group"
@@ -10,27 +11,38 @@ const dummy: Message[] = [
   {
     sender: "self",
     sent: new Date(),
-    message: "halo"
+    message: "halo",
+    type : "text"
   },
   {
     sender: "bot",
     sent: new Date(),
-    message: "Ada yang bisa saya bantu ?"
+    message: "Ada yang bisa saya bantu ?",
+    type : "text"
   },
   {
     sender: "bot",
     sent: new Date(),
-    message: "Ada yang bisa saya bantu ?"
+    message: "Ada yang bisa saya bantu ?",
+    type : "text"
   },
   {
     sender: "bot",
     sent: new Date(),
-    message: "Ada yang bisa saya bantu ?"
+    message: "Ada yang bisa saya bantu ?",
+    type : "text"
   },
   {
     sender: "bot",
     sent: new Date(),
-    message: "Ada yang bisa saya bantu ?"
+    message: "Ada yang bisa saya bantu ?",
+    type : "text"
+  },
+  {
+    sender: "bot",
+    sent: new Date(),
+    type : "sticker",
+    image : Hutao
   },
 ]
 function App() {
@@ -56,15 +68,17 @@ function App() {
       tempMessage.push({
         sender : "self",
         message : message,
-        sent : new Date()
+        sent : new Date(),
+        type : "text"
       });
       setAllMessage([...tempMessage])
       setIsLoading(true);
       setTimeout(() => {
         tempMessage.push({
           sender : "bot",
-          message : "Maaf saya tidak mengerti",
-          sent : new Date()
+          sent : new Date(),
+          type : "sticker",
+          image : KeqingStudy
         })
         setAllMessage([...tempMessage])
         setMessage("");
