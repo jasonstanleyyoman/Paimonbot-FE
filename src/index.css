@@ -29,3 +29,13 @@ input:focus {
 button:focus {
   outline : none;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(229, 231, 235);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:rgb(107, 114, 128);
+}

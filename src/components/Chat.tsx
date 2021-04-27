@@ -1,7 +1,5 @@
 import React from 'react'
-import LoadingAnimation from "./LoadingAnimation"
 import ChatBubble from "./ChatBubble"
-import { CSSTransition } from "react-transition-group"
 import { Message } from '../types'
 
 type Props = {
@@ -29,22 +27,22 @@ const Chat = ({
                     <div className="h-5 w-5 bg-yellow-400 rounded-full ml-2"></div>
                     <div className="h-5 w-5 bg-green-400 rounded-full"></div>
                 </div>
-                <div className="h-full w-full px-4 py-1 bg-gray-400 overflow-y-auto flex flex-col scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+                <div className="h-full w-full px-4 py-1 bg-gray-400 overflow-y-scroll flex flex-col">
                     <div className="self-center mt-2">Today</div>
                     {
-                        allMessage.map((message, idx) => <ChatBubble key={idx} sender={message.sender} sent={message.sent} type={message.type} image={message.image}>{message.message}</ChatBubble>)
+                        allMessage.map((m, idx) => <ChatBubble key={idx} sender={m.sender} sent={m.sent} type={m.type} image={m.image}>{m.message}</ChatBubble>)
                     }
 
                 </div>
                 <div className="w-full h-12 bg-gray-200 py-3 px-6 flex items-center border-t-4 border-transparent focus-within:border-yellow-100 transition duration-300 relative">
-                    <CSSTransition
+                    {/* <CSSTransition
                         in={isLoading}
                         timeout={300}
                         unmountOnExit
                         classNames="loading"
                     >
                         <LoadingAnimation />
-                    </CSSTransition>
+                    </CSSTransition> */}
                     <form className="w-full flex" onSubmit={(e) => {
                         e.preventDefault();
                         onSubmit();

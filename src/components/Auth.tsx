@@ -10,26 +10,57 @@ const Auth : React.FC<Props> = ({
 } : Props) => {
     const [mode, setMode] = React.useState<Mode>("login");
     const [isLoading, setIsLoading] = React.useState(false);
-    const [username, setUsername] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [username, setUsername] = React.useState("username");
+    const [password, setPassword] = React.useState("password");
     const [errorMessage, setErroMessage] = React.useState("");
     const socket = useSocket();
-    if (socket.socket !== null) {
-        
+    if (socket.socket) {
+        // socket.socket.on("")
+        socket.socket.on("login_success", () => { // Sukses login
+            localStorage.setItem("username", username);
+            onSuccess();
+        })
+
+        socket.socket.on("login_failed", () => {
+            setErroMessage("Data user tidak ditemukan")
+            setIsLoading(false);
+        })
+
+        socket.socket.on("register_success", () => {
+            setMode("login");
+            setUsername("");
+            setPassword("");
+            setIsLoading(false);
+        })
+
+        socket.socket.on("register_failed", () => {
+            setErroMessage("Sudah ada user dengan username tersebut")
+            setIsLoading(false);
+        })
     }
     React.useEffect(() => {
-        // socket.connect();
+        socket.connect();
     }, [])
+
+
     React.useEffect(() => {
         setErroMessage("");
     }, [username, password])
     const handleSubmit = () => {
+        if (isLoading) return;
+        setIsLoading(true);
         if (mode === "login") {
-            onSuccess();
+            socket.socket.emit("login", {
+                username : username,
+                password : password
+            })
         }
 
         if (mode === "register") {
-
+            socket.socket.emit("register", {
+                username : username,
+                password : password
+            })
         }
     }
     return(

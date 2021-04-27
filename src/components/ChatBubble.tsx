@@ -34,7 +34,7 @@ const ChatBubble: React.FC<Props> = ({
             <div className={`${sender === "self" ? "self-end" : ""} max-w-full`}>
                 {
                     type === "text" ?
-                    <p className="px-4 max-w-full bg-blue-300 rounded-xl">{children}</p> :
+                    <p className="px-4 max-w-full bg-blue-300 rounded-xl">{children ? children : ""}</p> :
                     <img 
                         className="w-40"
                         src={image}
