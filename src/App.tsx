@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import ChatBubble from "./components/ChatBubble"
 import './App.css';
 
 function App() {
@@ -12,25 +12,40 @@ function App() {
             <div className="h-5 w-5 bg-yellow-400 rounded-full ml-2"></div>
             <div className="h-5 w-5 bg-green-400 rounded-full"></div>
           </div>
-          <div className="h-full w-full px-2 py-1 bg-gray-400 overflow-y-auto flex flex-col">
-            <div className="self-center">Today</div>
-            <div className="self-end flex flex-col items-end">
-              <p className="text-gray-600 mr-2 text-md">You</p>
-              <div className="self-end px-4 max-w-full bg-blue-300 rounded-xl">
-                Ping
-              </div>
-              <p className="text-xs mr-1 mt-1 text-gray-300">19:12</p>
-            </div>
+          <div className="h-full w-full px-4 py-1 bg-gray-400 overflow-y-auto flex flex-col scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300">
+            <div className="self-center mt-2">Today</div>
+            <ChatBubble sender="self" sent={new Date()}>
+              Halo
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </ChatBubble>
+            <ChatBubble sender="bot" sent={new Date()}>
+              Ada yang bisa saya bantu ?
+            </ChatBubble>
 
-            <div className="flex flex-col items-start">
-              <img className="w-8 rounded-full mb-2 border-2 border-gray-500" src="https://previews.123rf.com/images/vikasuh/vikasuh1107/vikasuh110700323/10042501-funny-white-robot-stay-show-hello.jpg" />
-              <div className="px-4 max-w-full bg-blue-300 rounded-xl">
-                Halo ada yang bisa saya bantu ?
-              </div>
-              <p className="text-xs ml-1 mt-1 text-gray-300">19:13</p>
-            </div>
           </div>
-          <div className="w-full h-12 bg-gray-200 py-3 px-6 flex items-center border-t-4 border-transparent focus-within:border-green-300 transition duration-300">
+          <div className="w-full h-12 bg-gray-200 py-3 px-6 flex items-center border-t-4 border-transparent focus-within:border-green-300 transition duration-300 relative">
+            <span className="-top-5 w-full h-4 flex justify-center absolute">
+              <div className="animate-customBounce w-2 h-2 rounded-full bg-yellow-200">
+
+              </div>
+              <div className="animate-customBounce w-2 h-2 rounded-full bg-yellow-200 mx-2 delay-200">
+
+              </div>
+              <div className="animate-customBounce w-2 h-2 rounded-full bg-yellow-200 delay-400">
+
+              </div>
+            </span>
             <input placeholder="Ask us here" className="bg-gray-300 rounded-full px-3 py-1 w-full focus:outline-none border-none text-right" />
             <button className="ml-4 cursor-pointer border-none outline-none focus:outline-none text-sm text-gray-500 hover:text-gray-900 transition duration-300">Send</button>
           </div>
