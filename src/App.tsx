@@ -17,6 +17,21 @@ const dummy: Message[] = [
     sent: new Date(),
     message: "Ada yang bisa saya bantu ?"
   },
+  {
+    sender: "bot",
+    sent: new Date(),
+    message: "Ada yang bisa saya bantu ?"
+  },
+  {
+    sender: "bot",
+    sent: new Date(),
+    message: "Ada yang bisa saya bantu ?"
+  },
+  {
+    sender: "bot",
+    sent: new Date(),
+    message: "Ada yang bisa saya bantu ?"
+  },
 ]
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -61,7 +76,7 @@ function App() {
     setIsLoggedIn(true);
   }
   return (
-    <div className="App bg-yellow-300 h-screen w-screen flex items-center justify-center">
+    <div className="App bg-gray-700 h-screen w-screen flex items-center justify-center">
       {
         isLoggedIn ?
         <CSSTransition
