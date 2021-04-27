@@ -61,8 +61,22 @@ function App() {
   React.useEffect(() => {
     // socket.connect();
   }, [])
-  const handleSubmit = async () => {
+  const addMessage = (toAdd : Message) => {
+    const tempMessage : Message[] = [...allMessage, toAdd];
+    setAllMessage(tempMessage);
     
+  }
+  const handleSpecialCommand = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      
+    }, 2000)
+  }
+  const handleSubmit = async () => {
+    if (message.startsWith("!")) {
+      handleSpecialCommand();
+      return;
+    }
     if (message.length > 0 && !isLoading) {
       const tempMessage = [...allMessage]
       tempMessage.push({

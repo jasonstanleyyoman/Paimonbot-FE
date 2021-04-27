@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Paimon } from "../assets"
+import { bot_name, default_username } from "../config"
 type Props = {
     children?: React.ReactNode,
     sender: "bot" | "self",
@@ -12,6 +13,8 @@ const formatDate = (date : Date) : string => {
     return `${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}`;
 }
 
+const getUsername = () => localStorage.getItem("username") || default_username
+
 const ChatBubble: React.FC<Props> = ({
     children,
     sender,
@@ -22,8 +25,11 @@ const ChatBubble: React.FC<Props> = ({
     return (
         <div className={`${sender === "self" ? "self-end" : ""} flex flex-col items-${sender === "bot" ? "start" : "end"} my-2`}>
             {sender === "bot" ?
-                <img className="w-8 rounded-full mb-2 border-2 border-gray-500" alt="Bot" src="https://previews.123rf.com/images/vikasuh/vikasuh1107/vikasuh110700323/10042501-funny-white-robot-stay-show-hello.jpg" /> :
-                <p className="text-gray-600 mr-2 text-xl">You</p>
+                <div className="flex items-center">
+                    <img className="w-10 rounded-full mb-2 border-2 border-gray-500" alt="Bot" src={Paimon} />
+                    <p className="text-gray-600 text-xl ml-2">{bot_name}</p>
+                </div> :
+                <p className="text-gray-600 mr-2 text-xl">{getUsername()}</p>
             }
             <div className={`${sender === "self" ? "self-end" : ""} max-w-full`}>
                 {
