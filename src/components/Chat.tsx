@@ -22,7 +22,7 @@ const Chat = ({
 }: Props) => {
 
     return (
-        <div className="h-screen bg-yellow-200 w-full items-center justify-center px-10 py-20">
+        <div className="h-screen w-full items-center justify-center px-10 py-20 page-animation">
             <div className="w-full max-w-3xl h-full bg-yellow-400 rounded-md overflow-hidden flex flex-col justify-between items-stretch mx-auto">
                 <div className="w-full h-12 bg-gray-600 flex px-4 items-center flex-row-reverse">
                     <div className="h-5 w-5 bg-red-400 rounded-full ml-2"></div>
