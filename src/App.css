@@ -27,6 +27,13 @@
 .App-link {
   color: #61dafb;
 }
+.delay-200 {
+	animation-delay : 200ms;
+}
+
+.delay-400 {
+	animation-delay : 400ms;
+}
 
 @keyframes App-logo-spin {
   from {
