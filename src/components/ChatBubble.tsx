@@ -42,7 +42,7 @@ const ChatBubble: React.FC<Props> = ({
 						/>
 				}
 			</div>
-			<p className={`text-s ${sender === "bot" ? "ml-1" : "mr-1"} mt-1 text-gray-900 text-left`}>{formatDate(sent)}</p>
+			<p className={`text-s ${sender === "bot" ? "ml-1" : "mr-1"} mt-1 text-gray-900 ${sender === "bot" ? "text-left" : "text-right"}`}>{formatDate(sent)}</p>
 		</div>
 	);
 };
