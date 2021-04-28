@@ -1,7 +1,7 @@
 import React from 'react';
 import Chat from "./components/Chat";
 import Auth from "./components/Auth";
-import { KeqingStudy, ZhongliQuestion, DilucNote, DilucSent, Hutao } from "./assets";
+import { KeqingStudy, ZhongliQuestion, DilucNote, DilucSent, Hutao, XiaoMelamun, XingQiu, Albedo } from "./assets";
 import { Message } from "./types";
 import { useSocket } from './context/socket';
 import { CSSTransition } from "react-transition-group";
@@ -9,13 +9,16 @@ import { CSSTransition } from "react-transition-group";
 import './App.css';
 
 const idToSticker = (id: number): string => {
+	if (id === -1) return XingQiu;
 	const mapper = {
 		0: ZhongliQuestion,
 		1: DilucNote,
 		2: KeqingStudy,
 		3: KeqingStudy,
 		4: Hutao,
-		5: DilucSent
+		5: DilucSent,
+		6: XiaoMelamun,
+		7: Albedo
 	};
 	return mapper[id];
 };
@@ -61,6 +64,7 @@ const App: React.FC = () => {
 	}, [allMessage]);
 
 	const handleLogout = React.useCallback(() => {
+		setAllMessage([]);
 		setIsLoggedIn(false)
 	}, [isLoading])
 
