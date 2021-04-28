@@ -28,6 +28,7 @@ const Auth: React.FC<Props> = ({
     socket.socket.on("register_success", () => {
       setUsername("");
       setPassword("");
+      setMode("login");
       setIsLoading(false);
     });
 
