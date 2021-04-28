@@ -24,7 +24,7 @@ const ChatBubble: React.FC<Props> = ({
 	message = ""
 }: Props) => {
 	return (
-		<div className={`${sender === "self" ? "self-end" : ""} flex flex-col items-${sender === "bot" ? "start" : "end"} my-2`}>
+		<div className={`${sender === "self" ? "self-end" : "self-start"} flex flex-col items-${sender === "bot" ? "start" : "end"} my-2`}>
 			{sender === "bot" ?
 				<div className="flex items-center">
 					<img className="w-10 rounded-full mb-2 border-2 border-gray-500" alt="Bot" src={Paimon} />
@@ -35,14 +35,14 @@ const ChatBubble: React.FC<Props> = ({
 			<div className={`${sender === "self" ? "self-end" : ""} max-w-full`}>
 				{
 					type === "text" ?
-						<p className="px-4 text-left max-w-full bg-blue-300 rounded-xl whitespace-pre-line">{message ? message : ""}</p> :
+						<p className="px-4 text-left max-w-full bg-blue-300 rounded-xl">{message ? message : ""}</p> :
 						<img
 							className="w-40"
 							src={image}
 						/>
 				}
 			</div>
-			<p className="text-s mr-1 mt-1 text-gray-900">{formatDate(sent)}</p>
+			<p className={`text-s ${sender === "bot" ? "ml-1" : "mr-1"} mt-1 text-gray-900 text-left`}>{formatDate(sent)}</p>
 		</div>
 	);
 };
