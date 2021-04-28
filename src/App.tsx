@@ -29,6 +29,7 @@ const App: React.FC = () => {
 
 	const onLogout = () => {
 		if (socket.socket) socket.socket.close();
+		setAllMessage([]);
 		setIsLoggedIn(false);
 	}
 

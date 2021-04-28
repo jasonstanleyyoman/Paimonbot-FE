@@ -30,7 +30,7 @@ const ChatBubble: React.FC<Props> = ({
 					<img className="w-10 rounded-full mb-2 border-2 border-gray-500" alt="Bot" src={Paimon} />
 					<p className="text-gray-600 text-xl ml-2">{bot_name}</p>
 				</div> :
-				<p className="text-gray-600 mr-2 text-xl">{getUsername()}</p>
+				<p className="text-gray-600 mr-2 text-xl text-right">{getUsername()}</p>
 			}
 			<div className={`${sender === "self" ? "self-end" : ""} max-w-full`}>
 				{
