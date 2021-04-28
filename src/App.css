@@ -83,3 +83,6 @@
 .page-exit-active {
   transform: translateY(-500px);
 }
+.general-button:active {
+  transform: scale(0.97);
+}

@@ -57,7 +57,7 @@ const Chat = ({
 						onSubmit();
 					}}>
 						<input value={message} onChange={(e) => setMessage(e.currentTarget.value)} placeholder="Ask us here" className="bg-gray-300 rounded-full px-3 py-1 w-full focus:outline-none border-none text-right" />
-						<button className="ml-4 cursor-pointer border-none outline-none focus:outline-none text-sm text-gray-500 hover:text-gray-900 transition duration-300">Send</button>
+						<button className="ml-4 active:scale-95 cursor-pointer border-none outline-none focus:outline-none text-sm text-gray-500 hover:text-gray-900 transition duration-300 general-button">Send</button>
 					</form>
 				</div>
 			</div>
