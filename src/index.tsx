@@ -5,6 +5,11 @@ import App from './App';
 import SocketProvider from "./context/socket"
 import reportWebVitals from './reportWebVitals';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+console.log = () => {
+  return;
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <SocketProvider>
