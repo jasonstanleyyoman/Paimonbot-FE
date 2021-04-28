@@ -23,8 +23,6 @@ const ChatBubble: React.FC<Props> = ({
 	image,
 	message = ""
 }: Props) => {
-	console.log(message);
-	console.log(message.replaceAll("\n", "<br>"))
 	return (
 		<div className={`${sender === "self" ? "self-end" : ""} flex flex-col items-${sender === "bot" ? "start" : "end"} my-2`}>
 			{sender === "bot" ?

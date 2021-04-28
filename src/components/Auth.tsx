@@ -26,7 +26,6 @@ const Auth: React.FC<Props> = ({
     });
 
     socket.socket.on("register_success", () => {
-      setMode("login");
       setUsername("");
       setPassword("");
       setIsLoading(false);
@@ -38,7 +37,6 @@ const Auth: React.FC<Props> = ({
     });
   }
   React.useEffect(() => {
-    console.log("called");
     socket.connect();
   }, []);
 
@@ -47,9 +45,7 @@ const Auth: React.FC<Props> = ({
     setErroMessage("");
   }, [username, password]);
   const handleSubmit = () => {
-    console.log("awal");
     if (isLoading) return;
-    console.log("awal");
 
     setIsLoading(true);
 
